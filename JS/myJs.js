@@ -9,7 +9,7 @@ var module=angular.module('myApp',[]);
      if($scope.referInt==undefined || $scope.referInt<0 || $scope.referInt>10 )
      {
        $scope.lejo=false;
-       $scope.errorStr="Nr i futur nuk lejohet";
+       $scope.errorStr="Input Mismatch";
      }
    }
    $scope.getNrframe=function()
@@ -19,7 +19,7 @@ var module=angular.module('myApp',[]);
      if($scope.nrframe<1 || $scope.nrframe>10)
      {
        $scope.lejofr=false;
-       $scope.errorfr="Nr i framint nuk lejohet";
+       $scope.errorfr="Input Mismatch";
      }
    }
 
@@ -102,7 +102,7 @@ var module=angular.module('myApp',[]);
           }
               gjeresi++;
           }
-      $scope.nrpage="Nr i Page Faulteve= "+nrpagefauld;
+      $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
   }
   function LRU()
   {
@@ -175,7 +175,7 @@ var module=angular.module('myApp',[]);
           }
               gjeresi++;
       }
-      $scope.nrpage="Nr i Page Faulteve= "+nrpagefauld;
+      $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
   }
 
   function OPTIMAL()
@@ -255,7 +255,7 @@ var module=angular.module('myApp',[]);
           }
               gjeresi++;
           }
-    $scope.nrpage="Nr i Page Faulteve= "+nrpagefauld;
+    $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
   }
   $scope.clear=function()
   {
