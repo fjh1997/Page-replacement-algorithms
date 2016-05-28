@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="JS/angular.min.js"></script>
+<script src="JS/myJs.js"></script>
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="Style/mystyle.css">
+</head>
+<body ng-app="myApp" ng-controller="myctr" style="background-color:#FFFFF0;">
+   <h2 style="text-align:center">Algoritmat</h2>
+   <div  class="Row">
+<div class="Column">
+  <form class="form-inline">
+      <br>
+      <div class="form-group">
+         <label>Add String:</label>
+           <input type="number" class="form-control" ng-change="changeStr()" ng-model="referInt">
+           <span class="label label-danger" ng-hide="lejo">{{errorStr}}</span><br>
+           <input type="button" class="btn btn-primary" ng-show="lejo" value="Shto" ng-click="shto()">
+
+     </div>
+      <br><br>
+      <div class="form-group">
+          <label>Stringu i References</label><br>
+          <span>{{str}}</span>!
+      </div>
+      <br><br>
+      <div class="form-group">
+         <label>Zgjidhni nr e Frameve</label>
+        <input type="number" class="form-control" ng-change="getNrframe()" ng-model="nrframe" >
+        <span class="label label-danger" ng-hide="lejofr">{{errorfr}}</span><br>
+      </div>
+      <br><br>
+        <div>
+            <label>Zgjidhni Algoritmin:</label>
+            <select id="alg" class="form-control">
+               <option value="1">FIFO</option>
+               <option value="2">OPTIMAL</option>
+               <option value="3">LRU</option>
+           </select>
+        </div>
+       <br><br>
+        <div class="form-group" ng-show="lejofr">
+              <label>Zgjidh:</label><br>
+              <input type="button" class="btn btn-success" value="Afisho" ng-click="afisho()">
+              <input type="button" class="btn btn-error" value="Clear" ng-click="clear()">
+        </div>
+  <br>
+      <div class="form-group">
+        <span class="label label-primary">{{nrpage}}</span><br>
+      </div>
+      <br><br>
+      </form>
+     </div>
+       <div class="Column">
+        <label style="text-align:center">Afishimi Grafik</label>
+        <canvas id="myCanvas" width="950" height="500" style="border:1px solid #d3d3d3;"></canvas>
+       </div>
+
+</div>
+</body>
+</html>

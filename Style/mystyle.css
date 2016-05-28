@@ -1,0 +1,15 @@
+.Row
+    {
+    display: table;
+    width: 80%;
+    border-spacing: 20px;
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    margin-top: -50px;
+    margin-left: -40px;
+    }
+.Column
+{
+    display: table-cell;
+}
