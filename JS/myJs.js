@@ -258,11 +258,10 @@ var module=angular.module('myApp',[]);
               width++;
           }
     $scope.nrpage="缺页数= "+nrpagefault;
-<<<<<<< HEAD
+
           $scope.nrpage2="缺页率= "+nrpagefault/$scope.str.length*100+"%";
 
-=======
->>>>>>> a5637f961a8c3e1ba6de88f8d6c346c4e7c0af65
+
   }
   $scope.clear=function()
   {
