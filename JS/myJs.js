@@ -5,36 +5,36 @@ var module=angular.module('myApp',[]);
    $scope.changeStr=function()
    {
      $scope.errorStr="";
-     $scope.lejo=true;
+     $scope.enable=true;
      if($scope.referInt==undefined || $scope.referInt<0 || $scope.referInt>10 )
      {
-       $scope.lejo=false;
-       $scope.errorStr="Input Mismatch";
+       $scope.enable=false;
+       $scope.errorStr="输入错误";
      }
    }
    $scope.getNrframe=function()
    {
      $scope.errorfr="";
-     $scope.lejofr=true;
+     $scope.enablefr=true;
      if($scope.nrframe<1 || $scope.nrframe>10)
      {
-       $scope.lejofr=false;
-       $scope.errorfr="Input Mismatch";
+       $scope.enablefr=false;
+       $scope.errorfr="输入错误";
      }
    }
 
-   $scope.shto=function()
+   $scope.submit=function()
    {
         $scope.str.push($scope.referInt);
    }
 
 
-  function indexOfBetween(vlera,ind)
+  function indexOfBetween(value,ind)
   {
     var index;
     for(var c=0;c<ind;c++)
     {
-      if($scope.str[c]==vlera)
+      if($scope.str[c]==value)
       index=c;
     }
     return index;
@@ -44,12 +44,12 @@ var module=angular.module('myApp',[]);
   {
     var count=0;
     var frame=[];
-    var nrpagefauld=0;
+    var nrpagefault=0;
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     c.width= c.width;
-    var gjeresi=0;
-    var lartesi=0;
+    var width=0;
+    var height=0;
     var isfound=false;
       for(var i=0;i<$scope.str.length;i++)
       {
@@ -66,7 +66,7 @@ var module=angular.module('myApp',[]);
   		            frame.shift();
                   frame.push($scope.str[i]);
             }
-            nrpagefauld++;
+            nrpagefault++;
         }
         else
         {
@@ -75,45 +75,46 @@ var module=angular.module('myApp',[]);
          if(count>9)
          {
              count=1;
-             gjeresi=0;
-             lartesi=lartesi+30*$scope.nrframe+30;
-             if(lartesi+30*$scope.nrframe+30>c.height)
+             width=0;
+             height=height+30*$scope.nrframe+30;
+             if(height+30*$scope.nrframe+30>c.height)
              {
                c.height=c.height+30*$scope.nrframe+30;
              }
          }
-          ctx.fillText($scope.str[i],gjeresi*100+45,lartesi+25);
+          ctx.fillText($scope.str[i],width*100+45,height+25);
           for(var j=0;j<$scope.nrframe;j++)
           {
               if(!isfound)
               {
                    if(frame[j]!=undefined)
                   {
-                      ctx.fillText(frame[j],gjeresi*100+45,lartesi+j*30+50);
+                      ctx.fillText(frame[j],width*100+45,height+j*30+50);
                   }
-                  ctx.rect(gjeresi*100+30,lartesi+j*30+30, 40, 30);
+                  ctx.rect(width*100+30,height+j*30+30, 40, 30);
                   ctx.stroke();
               }
               else
               {
-                ctx.fillText("|",gjeresi*100+45,lartesi+j*30+50);
+                ctx.fillText("|",width*100+45,height+j*30+50);
               }
 
           }
-              gjeresi++;
+              width++;
           }
-      $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
+      $scope.nrpage="缺页数= "+nrpagefault;
+      $scope.nrpage2="缺页率= "+nrpagefault/$scope.str.length*100+"%";
   }
   function LRU()
   {
     var count=0;
     var frame=[];
-    var nrpagefauld=0;
+    var nrpagefault=0;
     var c = document.getElementById("myCanvas");
     var ctx = c.getContext("2d");
     c.width= c.width;
-    var gjeresi=0;
-    var lartesi=0;
+    var width=0;
+    var height=0;
     var isfound=false;
     for(var i=0;i<$scope.str.length;i++)
     {
@@ -139,7 +140,7 @@ var module=angular.module('myApp',[]);
                     frame.push($scope.str[i]);
 
           }
-          nrpagefauld++;
+          nrpagefault++;
       }
       else
       {
@@ -148,45 +149,46 @@ var module=angular.module('myApp',[]);
          if(count>9)
          {
              count=1;
-             gjeresi=0;
-             lartesi=lartesi+30*$scope.nrframe+30;
-             if(lartesi+30*$scope.nrframe+30>c.height)
+             width=0;
+             height=height+30*$scope.nrframe+30;
+             if(height+30*$scope.nrframe+30>c.height)
              {
                c.height=c.height+30*$scope.nrframe+30;
              }
          }
-          ctx.fillText($scope.str[i],gjeresi*100+45,lartesi+25);
+          ctx.fillText($scope.str[i],width*100+45,height+25);
           for(var j=0;j<$scope.nrframe;j++)
           {
               if(!isfound)
               {
                    if(frame[j]!=undefined)
                   {
-                      ctx.fillText(frame[j],gjeresi*100+45,lartesi+j*30+50);
+                      ctx.fillText(frame[j],width*100+45,height+j*30+50);
                   }
-                  ctx.rect(gjeresi*100+30,lartesi+j*30+30, 40, 30);
+                  ctx.rect(width*100+30,height+j*30+30, 40, 30);
                   ctx.stroke();
               }
               else
               {
-                ctx.fillText("|",gjeresi*100+45,lartesi+j*30+50);
+                ctx.fillText("|",width*100+45,height+j*30+50);
               }
 
           }
-              gjeresi++;
+              width++;
       }
-      $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
+      $scope.nrpage="缺页数= "+nrpagefault;
+      $scope.nrpage2="缺页率= "+nrpagefault/$scope.str.length*100+"%";
   }
 
   function OPTIMAL()
   {
       var frame=[]; var count=0;
-      var nrpagefauld=0;
+      var nrpagefault=0;
       var c = document.getElementById("myCanvas");
       var ctx = c.getContext("2d");
       c.width= c.width;
-      var gjeresi=0;
-      var lartesi=0;
+      var width=0;
+      var height=0;
       var isfound=false;
       for(var i=0;i<$scope.str.length;i++)
       {
@@ -219,7 +221,7 @@ var module=angular.module('myApp',[]);
                  frame.push($scope.str[i]);
 
             }
-            nrpagefauld++;
+            nrpagefault++;
         }
         else
         {
@@ -228,34 +230,34 @@ var module=angular.module('myApp',[]);
          if(count>9)
          {
             count=1;
-             gjeresi=0;
-             lartesi=lartesi+30*$scope.nrframe+30;
-             if(lartesi+30*$scope.nrframe+30>c.height)
+             width=0;
+             height=height+30*$scope.nrframe+30;
+             if(height+30*$scope.nrframe+30>c.height)
              {
                c.height=c.height+30*$scope.nrframe+30;
              }
          }
-          ctx.fillText($scope.str[i],gjeresi*100+45,lartesi+25);
+          ctx.fillText($scope.str[i],width*100+45,height+25);
           for(var j=0;j<$scope.nrframe;j++)
           {
               if(!isfound)
               {
                    if(frame[j]!=undefined)
                   {
-                      ctx.fillText(frame[j],gjeresi*100+45,lartesi+j*30+50);
+                      ctx.fillText(frame[j],width*100+45,height+j*30+50);
                   }
-                  ctx.rect(gjeresi*100+30,lartesi+j*30+30, 40, 30);
+                  ctx.rect(width*100+30,height+j*30+30, 40, 30);
                   ctx.stroke();
               }
               else
               {
-                ctx.fillText("|",gjeresi*100+45,lartesi+j*30+50);
+                ctx.fillText("|",width*100+45,height+j*30+50);
               }
 
           }
-              gjeresi++;
+              width++;
           }
-    $scope.nrpage="Nr of PageFaults= "+nrpagefauld;
+    $scope.nrpage="缺页数= "+nrpagefault;
   }
   $scope.clear=function()
   {
@@ -266,7 +268,7 @@ var module=angular.module('myApp',[]);
     var ctx = c.getContext("2d");
     c.width= c.width;
   }
-  $scope.afisho=function()
+  $scope.show=function()
    {
      var type=document.getElementById("alg");
      var value = parseInt(type[type.selectedIndex].value);

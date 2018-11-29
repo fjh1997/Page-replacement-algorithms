@@ -3,37 +3,38 @@
 <head>
 <script src="JS/angular.min.js"></script>
 <script src="JS/myJs.js"></script>
+    <script src="JS/jQuery.js"></script>
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 <link rel="stylesheet" href="Style/mystyle.css">
 </head>
 <body ng-app="myApp" ng-controller="myctr" style="background-color:#FFFFF0;">
-   <h2 style="text-align:center">Page replacement Algorithms</h2>
+   <h2 style="text-align:center">页面置换算法</h2>
    <div  class="Row">
 <div class="Column">
   <form class="form-inline">
       <br>
       <div class="form-group">
-         <label>Add String:</label>
+         <label>添加数字：</label>
            <input type="number" class="form-control" ng-change="changeStr()" ng-model="referInt">
-           <span class="label label-danger" ng-hide="lejo">{{errorStr}}</span><br>
-           <input type="button" class="btn btn-primary" ng-show="lejo" value="Add" ng-click="shto()">
+           <span class="label label-danger" ng-hide="enable">{{errorStr}}</span><br>
+           <input type="button" class="btn btn-primary" ng-show="enable" value="添加" ng-click="submit()">
 
      </div>
       <br><br>
       <div class="form-group">
-          <label>References String</label><br>
+          <label>数字序列</label><br>
           <span>{{str}}</span>!
       </div>
       <br><br>
       <div class="form-group">
-         <label>Choose Number of Frames</label>
+         <label>输入页面数</label>
         <input type="number" class="form-control" ng-change="getNrframe()" ng-model="nrframe" >
-        <span class="label label-danger" ng-hide="lejofr">{{errorfr}}</span><br>
+        <span class="label label-danger" ng-hide="enablefr">{{errorfr}}</span><br>
       </div>
       <br><br>
         <div>
-            <label>Choose Algorithm:</label>
+            <label>选择算法：</label>
             <select id="alg" class="form-control">
                <option value="1">FIFO</option>
                <option value="2">OPTIMAL</option>
@@ -41,14 +42,15 @@
            </select>
         </div>
        <br><br>
-        <div class="form-group" ng-show="lejofr">
-              <label>Zgjidh:</label><br>
-              <input type="button" class="btn btn-success" value="Show" ng-click="afisho()">
-              <input type="button" class="btn btn-error" value="Clear" ng-click="clear()">
+        <div class="form-group" ng-show="enablefr">
+              <label>确认:</label><br>
+              <input type="button" class="btn btn-success" value="确定" ng-click="show()">
+              <input type="button" class="btn btn-error" value="清除" ng-click="clear()">
         </div>
   <br>
       <div class="form-group">
         <span class="label label-primary">{{nrpage}}</span><br>
+          <span class="label label-primary">{{nrpage2}}</span><br>
       </div>
       <br><br>
       </form>
